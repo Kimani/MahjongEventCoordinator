@@ -31,7 +31,9 @@
             Margin="10"
             Grid.Row="2">
             <TabItem Header="Setup">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer
+                    HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Auto">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="400" />

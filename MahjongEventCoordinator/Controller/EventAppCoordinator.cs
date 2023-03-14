@@ -18,5 +18,10 @@ namespace MahjongEventCoordinator.Controller
 
         public static AppModel     Model         { get; private set; }
         public static AppViewModel ViewModel     { get; private set; }
+
+        public static void Initialize()
+        {
+
+        }
     }
 }

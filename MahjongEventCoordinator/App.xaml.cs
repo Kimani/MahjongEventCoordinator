@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2023
+
+using MahjongEventCoordinator.Controller;
 using System.Windows;
 
 namespace MahjongEventCoordinator
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        public static App CurrentInstance;
+
+        private void DebateApplicationStartup(object sender, StartupEventArgs args)
+        {
+            CurrentInstance = this;
+            EventAppCoordinator.Initialize();
+        }
     }
 }

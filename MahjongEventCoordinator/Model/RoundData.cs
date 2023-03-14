@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace MahjongEventCoordinator.Model
 {
-    public class AppModel
+    public class RoundData
     {
-        public EventData ActiveEvent { get; set; }
+        //IReadOnlyList<>
     }
 }

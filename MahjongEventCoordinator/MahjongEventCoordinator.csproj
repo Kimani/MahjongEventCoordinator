@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahjongCoreV2">
-      <HintPath>..\..\..\Bin\anychk\MahjongCore\MahjongCoreV2.dll</HintPath>
+      <HintPath>.\MahjongCoreV2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\EventData.cs" />
+    <Compile Include="Model\PlayerData.cs" />
+    <Compile Include="Model\RoundData.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Page Include="EventWindow.xaml">
       <SubType>Designer</SubType>
