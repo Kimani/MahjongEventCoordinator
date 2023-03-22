@@ -88,7 +88,11 @@
                                     VerticalAlignment="Center"
                                     DockPanel.Dock="Left"
                                     Text="Round Count" />
-                                <TextBox DockPanel.Dock="Right" Width="100" />
+                                <TextBox
+                                    DockPanel.Dock="Right"
+                                    IsReadOnly="True"
+                                    Text="4"
+                                    Width="100" />
                             </DockPanel>
 
                             <DockPanel LastChildFill="False" Margin="20,5,20,0">
@@ -96,7 +100,11 @@
                                     VerticalAlignment="Center"
                                     DockPanel.Dock="Left"
                                     Text="Upper Division Modifier" />
-                                <TextBox DockPanel.Dock="Right" Width="100" />
+                                <TextBox
+                                    Text="4"
+                                    IsReadOnly="True"
+                                    DockPanel.Dock="Right"
+                                    Width="100" />
                             </DockPanel>
 
                             <DockPanel LastChildFill="False" Margin="20,5,20,0">
@@ -104,7 +112,11 @@
                                     VerticalAlignment="Center"
                                     DockPanel.Dock="Left"
                                     Text="Lower Division Modifier" />
-                                <TextBox DockPanel.Dock="Right" Width="100" />
+                                <TextBox
+                                    Text="2"
+                                    IsReadOnly="True"
+                                    DockPanel.Dock="Right"
+                                    Width="100" />
                             </DockPanel>
 
                             <DockPanel LastChildFill="False" Margin="20,5,20,0">
@@ -112,7 +124,11 @@
                                     VerticalAlignment="Center"
                                     DockPanel.Dock="Left"
                                     Text="Chombo Penalty" />
-                                <TextBox DockPanel.Dock="Right" Width="100" />
+                                <TextBox
+                                    DockPanel.Dock="Right"
+                                    Text="20"
+                                    IsReadOnly="True"
+                                    Width="100" />
                             </DockPanel>
 
                             <DockPanel LastChildFill="False" Margin="20,5,20,0">
@@ -120,7 +136,11 @@
                                     VerticalAlignment="Center"
                                     DockPanel.Dock="Left"
                                     Text="Upper Division Table Count" />
-                                <TextBox DockPanel.Dock="Right" Width="100" />
+                                <TextBox
+                                    DockPanel.Dock="Right"
+                                    Text="1"
+                                    IsReadOnly="True"
+                                    Width="100" />
                             </DockPanel>
 
                             <DockPanel LastChildFill="False" Margin="20,5,20,0">
@@ -128,7 +148,8 @@
                                     VerticalAlignment="Center"
                                     DockPanel.Dock="Left"
                                     Text="Final Round Seating Strategy" />
-                                <ComboBox DockPanel.Dock="Right" Width="100" />
+                                <ComboBox DockPanel.Dock="Right" Width="100">
+                                </ComboBox>
                             </DockPanel>
                         </StackPanel>
                     </Grid>
