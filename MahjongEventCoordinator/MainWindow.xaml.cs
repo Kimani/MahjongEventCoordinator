@@ -1,5 +1,6 @@
 ﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2023
 
+using MahjongEventCoordinator.ViewModel;
 using System.Windows;
 
 namespace MahjongEventCoordinator
@@ -9,6 +10,8 @@ namespace MahjongEventCoordinator
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new AppViewModel
+                ();
         }
 
         private void ExitClicked(object sender, RoutedEventArgs args)                => System.Environment.Exit(0);

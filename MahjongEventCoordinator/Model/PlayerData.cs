@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace MahjongEventCoordinator.Model
 {
@@ -12,6 +13,19 @@ namespace MahjongEventCoordinator.Model
     {
         public Guid   Id         { get; set; }
         public string Name       { get; set; }
-        public string Substitute { get; set; }
+        public bool Substitute { get; set; }
+        public double[] RoundScores { get; set; }
+        public double TotalScore 
+        {
+            get
+            {
+                double total = 0;
+                foreach (double score in RoundScores)
+                {
+                    total += score;
+                }
+                return total;
+            }
+        }
     }
 }

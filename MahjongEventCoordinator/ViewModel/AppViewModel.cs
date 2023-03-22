@@ -10,5 +10,6 @@ namespace MahjongEventCoordinator.ViewModel
 {
     public class AppViewModel
     {
+        public string Name { get => "aslkfjsldakjfdsa"; set { } }
     }
 }

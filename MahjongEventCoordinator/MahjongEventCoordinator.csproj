@@ -58,9 +58,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\TablePlayerData.cs" />
     <Compile Include="Model\EventData.cs" />
     <Compile Include="Model\PlayerData.cs" />
     <Compile Include="Model\RoundData.cs" />
+    <Compile Include="Model\TableData.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Page Include="EventWindow.xaml">
       <SubType>Designer</SubType>

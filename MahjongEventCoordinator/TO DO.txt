@@ -1,6 +1,17 @@
 ﻿
 P1
-- Base implementation
+- Base implementation:
+*Player Inputs (ID, Name, Sub=false, score=0.0)
+
+*3 Rounds, 1 Final
+
+*Final Round (Top 4 divide by 4 for score, everyone else divide by 2)
+**Top 4 (minus subs) face each other, everyone else is sorted to the tables (5 at T1, 6 at T2, etc)
+
+*sort()
+*finalsort()
+
+*Round Data: input raw score, get out ranking score.
 
 P2
 - Timer
