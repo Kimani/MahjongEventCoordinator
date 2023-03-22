@@ -11,7 +11,7 @@ P1
 *sort()
 *finalsort()
 
-*Round Data: input raw score, get out ranking score.
+*UpdatePlayer Method: Takes playerdata between rounds and puts it back into EventData.Players.
 
 P2
 - Timer

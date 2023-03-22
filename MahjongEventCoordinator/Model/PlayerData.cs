@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace MahjongEventCoordinator.Model
 {
-    public class PlayerData
+    public class PlayerData : IComparable<PlayerData>
     {
         public Guid   Id         { get; set; }
         public string Name       { get; set; }
@@ -27,5 +27,25 @@ namespace MahjongEventCoordinator.Model
                 return total;
             }
         }
-    }
+        public void AssignScore(double score, int round)
+        {
+            RoundScores[round] = score;
+        }
+
+		public int CompareTo(PlayerData other)
+		{
+			if (TotalScore > other.TotalScore)
+            {
+                return -1;
+            }
+            else if (TotalScore < other.TotalScore)
+            {
+                return 1;
+            }
+            else
+            { 
+                return 0; 
+            }
+		}
+	}
 }
