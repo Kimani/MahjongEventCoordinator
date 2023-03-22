@@ -2,6 +2,7 @@
     x:Class="MahjongEventCoordinator.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:common="clr-namespace:MahjongEventCoordinator.Common"
     Title="Mahjong Event Coordinator" 
     Height="450"
     Width="800">
@@ -91,6 +92,7 @@
                                 <TextBox
                                     DockPanel.Dock="Right"
                                     IsReadOnly="True"
+                                    IsEnabled="False"
                                     Text="4"
                                     Width="100" />
                             </DockPanel>
@@ -103,6 +105,7 @@
                                 <TextBox
                                     Text="4"
                                     IsReadOnly="True"
+                                    IsEnabled="False"
                                     DockPanel.Dock="Right"
                                     Width="100" />
                             </DockPanel>
@@ -115,6 +118,7 @@
                                 <TextBox
                                     Text="2"
                                     IsReadOnly="True"
+                                    IsEnabled="False"
                                     DockPanel.Dock="Right"
                                     Width="100" />
                             </DockPanel>
@@ -126,6 +130,7 @@
                                     Text="Chombo Penalty" />
                                 <TextBox
                                     DockPanel.Dock="Right"
+                                    IsEnabled="False"
                                     Text="20"
                                     IsReadOnly="True"
                                     Width="100" />
@@ -138,6 +143,7 @@
                                     Text="Upper Division Table Count" />
                                 <TextBox
                                     DockPanel.Dock="Right"
+                                    IsEnabled="False"
                                     Text="1"
                                     IsReadOnly="True"
                                     Width="100" />
@@ -148,7 +154,13 @@
                                     VerticalAlignment="Center"
                                     DockPanel.Dock="Left"
                                     Text="Final Round Seating Strategy" />
-                                <ComboBox DockPanel.Dock="Right" Width="100">
+                                <ComboBox
+                                    SelectedIndex="0"
+                                    IsEnabled="False"
+                                    DockPanel.Dock="Right"
+                                    IsReadOnly="True"
+                                    Width="100">
+                                    <common:SeatingStrategy>HzMethod</common:SeatingStrategy>
                                 </ComboBox>
                             </DockPanel>
                         </StackPanel>
