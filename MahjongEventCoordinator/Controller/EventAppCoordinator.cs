@@ -21,7 +21,13 @@ namespace MahjongEventCoordinator.Controller
 
         public static void Initialize()
         {
+            ViewModel = new AppViewModel();
 
+            // TODO: Create AppModel here, using ViewModel properties.
+            // NOTE: Later this will be refactored so that we build the model
+            // first, and it will determine defaults. But for now we'll do it
+            // this way so that the ViewModel is supplying them. And for now they
+            // are hardcoded.
         }
     }
 }

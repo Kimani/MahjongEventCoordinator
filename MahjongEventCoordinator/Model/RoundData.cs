@@ -10,6 +10,6 @@ namespace MahjongEventCoordinator.Model
 {
     public class RoundData
     {
-        //IReadOnlyList<>
+
     }
 }
