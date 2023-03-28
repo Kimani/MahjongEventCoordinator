@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MahjongCore.Riichi;
+using MahjongCore.Riichi.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,8 @@ namespace MahjongEventCoordinator.Common
 {
     class Helpers
     {
-        /*
-               public static IGameSettings GenerateInitialGameSettings()
+
+        public static IGameSettings GenerateInitialGameSettings()
         {
             // Set common settings factored into app functionality.
             IGameSettings settings = GameSettingsFactory.BuildGameSettings();
@@ -30,28 +32,18 @@ namespace MahjongEventCoordinator.Common
             return settings;
         }
 
-        public static IGameState GenerateInitialGameState(IGameSettings settings)
-        {
-            // Create a game state based on the settings, and advance past pregame.
-            IGameState state = GameStateFactory.CreateNewGame(settings);
-            GameStateHelpers.InitializeToFirstDiscard(state);
-            state.SubmitOverride(OverrideState.DoraCount, 0);
-            return state;
-        }
-
-
-              public static IGameResult GetGameResult(IGameState state)
+        
+        public static IGameResult GetGameResult(IGameState state)
         {
             IGameResult result = null;
             void gameCompleteHandler(IGameResult r) { result = r; }
             state.GameComplete += gameCompleteHandler;
             state.SubmitResultCommand(ResultFactory.BuildFireGameResultCommand());
             state.GameComplete -= gameCompleteHandler;
-            CommonHelpers.Check((result != null), "Didn't fire game result!!");
             return result;
         }
 
-
+        /*
           public void SetHandOverride(Player player, OverrideHand hand, object value)
         {
             GameStateHelpers.GetHand(State, player).SubmitOverride(hand, value);

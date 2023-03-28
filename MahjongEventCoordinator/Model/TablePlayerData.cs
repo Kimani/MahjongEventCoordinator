@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace MahjongEventCoordinator.Model
 {
-	internal class TablePlayerData
+	public class TablePlayerData
 	{
 		public PlayerData Player { get; set; }
-		public string Seat { get; set; }
+		public string FirstSeat { get; set; }
 		public int RawScore { get; set; }
 		public int ChomboCount { get; set; }
-		/*public double CalculateFinalScore()
-		{
-			
-		}*/
 	}
 }

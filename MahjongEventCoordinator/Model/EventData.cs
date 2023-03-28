@@ -17,6 +17,7 @@ namespace MahjongEventCoordinator.Model
         public int                       UpperDivisionTableCount { get; set; }
         public IReadOnlyList<PlayerData> Players                 { get; set; }
         public IReadOnlyList<RoundData>  Rounds                  { get; set; }
+        public bool[][] pairup { get; set; }
 
         public static EventData Load(string path)
         {
