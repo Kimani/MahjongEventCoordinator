@@ -15,6 +15,7 @@ namespace MahjongEventCoordinator.Model
         public string Name       { get; set; }
         public bool Substitute { get; set; }
         public double[] RoundScores { get; set; }
+        public List<string> pastPlayers { get; set; }
         public double TotalScore 
         {
             get
@@ -47,5 +48,23 @@ namespace MahjongEventCoordinator.Model
                 return 0; 
             }
 		}
+        public void registerRepeats(string p, string q, string r)
+        {
+            this.pastPlayers.Add(p);
+            this.pastPlayers.Add(q);
+            this.pastPlayers.Add(r);
+        }
+        public bool newOpponent(PlayerData other)
+        {
+            string p = other.Id.ToString();
+            foreach (string r in pastPlayers)
+            {
+                if (r == p)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 	}
 }

@@ -58,8 +58,66 @@ namespace MahjongEventCoordinator.Model
             }
             else
             {
-                //insert randomizing method here.
+                Random rng = new Random();
+                List<PlayerData> tableUp = new List<PlayerData>(Players);
+                for (int i = 0; i < Tables.Length; i++)
+                {
+                    PlayerData p1 = tableUp.ElementAtOrDefault(rng.Next(tableUp.Count - 1));
+                    tableUp.Remove(p1);
+					PlayerData p2 = tableUp.ElementAtOrDefault(rng.Next(tableUp.Count - 1));
+					tableUp.Remove(p2);
+					PlayerData p3 = tableUp.ElementAtOrDefault(rng.Next(tableUp.Count - 1));
+					tableUp.Remove(p3);
+					PlayerData p4 = tableUp.ElementAtOrDefault(rng.Next(tableUp.Count - 1));
+					tableUp.Remove(p4);
+
+                    bool validTable = false;
+                    while (!validTable)
+                    {
+                        bool[] checkvalidity = checkTableValidity(p1, p2, p3, p4);
+                        PlayerData swap;
+                        validTable = true;
+                        if (checkvalidity[1] == false)
+                        {
+                            validTable = false;
+                            swap = tableUp.ElementAtOrDefault(rng.Next(tableUp.Count - 1));
+                            tableUp.Add(p2);
+                            p2 = swap;
+                            tableUp.Remove(p2);
+                        }
+                        if (checkvalidity[2] == false)
+                        {
+                            validTable = false;
+                            swap = tableUp.ElementAtOrDefault(rng.Next(tableUp.Count - 1));
+                            tableUp.Add(p3);
+                            p3 = swap;
+                            tableUp.Remove(p3);
+                        }
+                        if (checkvalidity[3] == false)
+                        {
+                            validTable = false;
+                            swap = tableUp.ElementAtOrDefault(rng.Next(tableUp.Count - 1));
+                            tableUp.Add(p4);
+                            p4 = swap;
+                            tableUp.Remove(p4);
+                        }
+                    }
+					Tables[i].Seats[0].Player = p1;
+                    Tables[i].Seats[1].Player = p2;
+					Tables[i].Seats[2].Player = p3;
+					Tables[i].Seats[3].Player = p4;
+				}
             }
         }
+        public bool[] checkTableValidity(PlayerData p1, PlayerData p2, PlayerData p3, PlayerData p4)
+        {
+            bool[] triplecheck = new bool[4];
+            triplecheck[0] = true;
+            triplecheck[1] = p1.newOpponent(p2);
+            triplecheck[2] = p1.newOpponent(p3) && (!triplecheck[1] || p2.newOpponent(p3));
+			triplecheck[3] = p1.newOpponent(p4) && (!triplecheck[1] || p2.newOpponent(p4)) && (!triplecheck[2] || p3.newOpponent(p4));
+
+            return triplecheck;
+		}
     }
 }
