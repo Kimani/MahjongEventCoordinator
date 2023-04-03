@@ -1,5 +1,6 @@
 ﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2023
 
+using MahjongEventCoordinator.Controller;
 using MahjongEventCoordinator.ViewModel;
 using System.Windows;
 
@@ -10,14 +11,13 @@ namespace MahjongEventCoordinator
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new AppViewModel
-                ();
+            DataContext = EventAppCoordinator.ViewModel;
         }
 
-        private void ExitClicked(object sender, RoutedEventArgs args)                => System.Environment.Exit(0);
-        private void NewClicked(object sender, RoutedEventArgs args)                   {}
-        private void OpenClicked(object sender, RoutedEventArgs args)                 {}
-        private void SaveClicked(object sender, RoutedEventArgs args) { }
-        private void SaveAsClicked(object sender, RoutedEventArgs args) { }
+        private void ExitClicked(object sender, RoutedEventArgs args)   => System.Environment.Exit(0);
+        private void NewClicked(object sender, RoutedEventArgs args)    {}
+        private void OpenClicked(object sender, RoutedEventArgs args)   {}
+        private void SaveClicked(object sender, RoutedEventArgs args)   {}
+        private void SaveAsClicked(object sender, RoutedEventArgs args) {}
     }
 }

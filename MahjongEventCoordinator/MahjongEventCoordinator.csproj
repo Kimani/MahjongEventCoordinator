@@ -81,6 +81,10 @@
     <Compile Include="Model\RoundData.cs" />
     <Compile Include="Model\TableData.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
+    <Compile Include="ViewModel\BindableBase.cs" />
+    <Compile Include="View\SetupView.xaml.cs">
+      <DependentUpon>SetupView.xaml</DependentUpon>
+    </Compile>
     <Page Include="EventWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\SetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\AppModel.cs" />
@@ -130,9 +138,7 @@
   <ItemGroup>
     <None Include="Resources\App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="TO DO.txt" />
   </ItemGroup>
