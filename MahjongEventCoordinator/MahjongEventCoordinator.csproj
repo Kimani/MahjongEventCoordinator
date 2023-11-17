@@ -82,6 +82,7 @@
     <Compile Include="Model\TableData.cs" />
     <Compile Include="ViewModel\AppViewModel.cs" />
     <Compile Include="ViewModel\BindableBase.cs" />
+    <Compile Include="View\Selector\TabSelectorStyle.cs" />
     <Compile Include="View\SetupView.xaml.cs">
       <DependentUpon>SetupView.xaml</DependentUpon>
     </Compile>
