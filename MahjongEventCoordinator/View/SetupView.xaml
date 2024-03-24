@@ -78,9 +78,8 @@
                                         DockPanel.Dock="Left"
                                         Text="Count" />
                                     <TextBox
-                                        PreviewTextInput="OnIntegerOnlyTextBoxPreviewTextInput"
                                         IsReadOnly="True"
-                                        Value="{Binding QualifiersCount}"
+                                        Text="{Binding QualifiersCount}"
                                         DockPanel.Dock="Right"
                                         Width="100" />
                                 </DockPanel>
@@ -92,8 +91,7 @@
                                         DockPanel.Dock="Left"
                                         Text="Time (mins)" />
                                     <TextBox
-                                        IsReadOnly="True"
-                                        IsEnabled="False"
+                                        Text="{Binding QualifiersTime}"
                                         DockPanel.Dock="Right"
                                         Width="100" />
                                 </DockPanel>
@@ -112,6 +110,7 @@
                                     <TextBox
                                         IsReadOnly="True"
                                         IsEnabled="False"
+                                        Text="{Binding FinalsCount}"
                                         DockPanel.Dock="Right"
                                         Width="100" />
                                 </DockPanel>
@@ -123,8 +122,7 @@
                                         DockPanel.Dock="Left"
                                         Text="Time (mins)" />
                                     <TextBox
-                                        IsReadOnly="True"
-                                        IsEnabled="False"
+                                        Text="{Binding FinalsTime}"
                                         DockPanel.Dock="Right"
                                         Width="100" />
                                 </DockPanel>
@@ -140,8 +138,6 @@
                                 Text="Upper Division Modifier" />
                             <TextBox
                                 Text="{Binding UpperDivisionModifier}"
-                                IsReadOnly="True"
-                                IsEnabled="False"
                                 DockPanel.Dock="Right"
                                 Width="100" />
                         </DockPanel>
@@ -155,8 +151,6 @@
                                 Text="Lower Division Modifier" />
                             <TextBox
                                 Text="{Binding LowerDivisionModifier}"
-                                IsReadOnly="True"
-                                IsEnabled="False"
                                 DockPanel.Dock="Right"
                                 Width="100" />
                         </DockPanel>
@@ -172,7 +166,6 @@
                                 DockPanel.Dock="Right"
                                 IsEnabled="False"
                                 Text="{Binding UpperDivisionTableCount}"
-                                IsReadOnly="True"
                                 Width="100" />
                         </DockPanel>
 
@@ -184,9 +177,7 @@
                                 DockPanel.Dock="Left"
                                 Text="Final Round Seating Strategy" />
                             <ComboBox
-                                IsEnabled="False"
                                 DockPanel.Dock="Right"
-                                IsReadOnly="True"
                                 SelectedItem="{Binding FinalRoundSeatingStrategy, Mode=TwoWay}"
                                 Width="100">
                                 <common:SeatingStrategy>HzMethod</common:SeatingStrategy>

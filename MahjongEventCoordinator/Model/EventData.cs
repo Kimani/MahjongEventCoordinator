@@ -53,6 +53,6 @@ namespace MahjongEventCoordinator.Model
             return null;
         }
 
-        private EventData() { }
+        public EventData() { }
     }
 }
