@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-    xmlns:local="clr-namespace:MahjongEventCoordinator.View"
+
     xmlns:common="clr-namespace:MahjongEventCoordinator.Common"
-    mc:Ignorable="d" 
+    mc:Ignorable="d"
     d:DesignHeight="600" 
     d:DesignWidth="400">
     <ScrollViewer
@@ -14,7 +14,7 @@
         VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="400"  />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
@@ -27,26 +27,18 @@
                     Margin="10,5,0,0"
                     Text="Players" />
 
+                <Button
+                    DockPanel.Dock="Bottom"
+                    Content="Add Player"
+                    Margin="10,0,10,10"
+                    Height="30" />
+
                 <Border
                     Margin="10"
                     BorderThickness="1"
                     BorderBrush="Gray" >
                     <ScrollViewer>
-                        <StackPanel>
-                            <StackPanel
-                                Margin="10,5,20,0"
-                                DockPanel.Dock="Top"
-                                Orientation="Horizontal">
-                                <TextBlock
-                                    Width="175"
-                                    Text="Player Name" />
-                                <TextBlock
-                                    Width="175"
-                                    Text="Substitute" />
-                            </StackPanel>
-
-                            <ItemsControl />
-                        </StackPanel>
+                        <ItemsControl />
                     </ScrollViewer>
                 </Border>
             </DockPanel>
@@ -58,7 +50,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition />
-                    <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
 
                 <!-- Settings Header -->
@@ -69,7 +60,7 @@
                     Margin="10,5,0,0"
                     Text="Settings" />
 
-                <!-- Tourament Settings -->
+                <!-- Tournament Settings -->
                 <ScrollViewer
                     Margin="0,6,0,0"
                     VerticalScrollBarVisibility="Auto"
@@ -77,24 +68,72 @@
                     <StackPanel
                         HorizontalAlignment="Left"
                         Width="300">
-                        <DockPanel
-                            LastChildFill="False" 
-                            Margin="20,0,20,0">
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                DockPanel.Dock="Left"
-                                Text="Round Count" />
-                            <TextBox
-                                DockPanel.Dock="Right"
-                                IsReadOnly="True"
-                                IsEnabled="False"
-                                Text="{Binding RoundCount}"
-                                Width="100" />
-                        </DockPanel>
+                        <GroupBox Header="Qualifying Round(s)">
+                            <StackPanel>
+                                <DockPanel
+                                    LastChildFill="False"
+                                    Margin="5,5,5,0">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        DockPanel.Dock="Left"
+                                        Text="Count" />
+                                    <TextBox
+                                        PreviewTextInput="OnIntegerOnlyTextBoxPreviewTextInput"
+                                        IsReadOnly="True"
+                                        Value="{Binding QualifiersCount}"
+                                        DockPanel.Dock="Right"
+                                        Width="100" />
+                                </DockPanel>
+                                <DockPanel
+                                    LastChildFill="False"
+                                    Margin="5,5,5,0">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        DockPanel.Dock="Left"
+                                        Text="Time (mins)" />
+                                    <TextBox
+                                        IsReadOnly="True"
+                                        IsEnabled="False"
+                                        DockPanel.Dock="Right"
+                                        Width="100" />
+                                </DockPanel>
+                            </StackPanel>
+                        </GroupBox>
+
+                        <GroupBox Header="Final Round(s)">
+                            <StackPanel>
+                                <DockPanel
+                                    LastChildFill="False"
+                                    Margin="5,5,5,0">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        DockPanel.Dock="Left"
+                                        Text="Count" />
+                                    <TextBox
+                                        IsReadOnly="True"
+                                        IsEnabled="False"
+                                        DockPanel.Dock="Right"
+                                        Width="100" />
+                                </DockPanel>
+                                <DockPanel
+                                    LastChildFill="False"
+                                    Margin="5,5,5,0">
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        DockPanel.Dock="Left"
+                                        Text="Time (mins)" />
+                                    <TextBox
+                                        IsReadOnly="True"
+                                        IsEnabled="False"
+                                        DockPanel.Dock="Right"
+                                        Width="100" />
+                                </DockPanel>
+                            </StackPanel>
+                        </GroupBox>
 
                         <DockPanel
                             LastChildFill="False"
-                            Margin="20,5,20,0">
+                            Margin="10,5,12,0">
                             <TextBlock
                                 VerticalAlignment="Center"
                                 DockPanel.Dock="Left"
@@ -109,7 +148,7 @@
 
                         <DockPanel
                             LastChildFill="False"
-                            Margin="20,5,20,0">
+                            Margin="10,5,12,0">
                             <TextBlock
                                 VerticalAlignment="Center"
                                 DockPanel.Dock="Left"
@@ -124,22 +163,7 @@
 
                         <DockPanel
                             LastChildFill="False"
-                            Margin="20,5,20,0">
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                DockPanel.Dock="Left"
-                                Text="Chombo Penalty" />
-                            <TextBox
-                                DockPanel.Dock="Right"
-                                IsEnabled="False"
-                                Text="{Binding ChomboPenalty}"
-                                IsReadOnly="True"
-                                Width="100" />
-                        </DockPanel>
-
-                        <DockPanel
-                            LastChildFill="False"
-                            Margin="20,5,20,0">
+                            Margin="10,5,12,0">
                             <TextBlock
                                 VerticalAlignment="Center"
                                 DockPanel.Dock="Left"
@@ -154,7 +178,7 @@
 
                         <DockPanel
                             LastChildFill="False" 
-                            Margin="20,5,20,0">
+                            Margin="10,5,12,0">
                             <TextBlock
                                 VerticalAlignment="Center"
                                 DockPanel.Dock="Left"
@@ -168,16 +192,37 @@
                                 <common:SeatingStrategy>HzMethod</common:SeatingStrategy>
                             </ComboBox>
                         </DockPanel>
+
+                        <!-- Begin Tournament Button -->
+                        <Button
+                            Grid.Row="2"
+                            HorizontalAlignment="Stretch"
+                            Margin="2,15,2,0"
+                            Height="30"
+                            Padding="0,-2,0,0"
+                            Content="Begin Tournament" />
+
+                        <!-- Round Controls -->
+                        <TextBlock
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Margin="10,15,0,0"
+                            Text="Round Play" />
+                        
+                        <Border
+                            Margin="2,10,2,5"
+                            HorizontalAlignment="Stretch"
+                            BorderBrush="Gray"
+                            MinHeight="100"
+                            BorderThickness="1">
+                            <ScrollViewer>
+                                <ItemsControl>
+                                    
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
                     </StackPanel>
                 </ScrollViewer>
-
-                <!-- Begin Tournament Button -->
-                <Button
-                    Grid.Row="2"
-                    Width="270"
-                    HorizontalAlignment="Left"
-                    Margin="10,0,0,0"
-                    Content="Begin Tournament" />
             </Grid>
         </Grid>
     </ScrollViewer>

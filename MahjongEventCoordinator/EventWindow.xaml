@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:MahjongEventCoordinator"
         mc:Ignorable="d"
         Title="EventWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <TabControl>
+        <TabItem Header="Timer">
+        </TabItem>
+    </TabControl>
 </Window>

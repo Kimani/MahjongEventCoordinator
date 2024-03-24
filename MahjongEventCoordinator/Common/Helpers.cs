@@ -1,16 +1,11 @@
-﻿using MahjongCore.Riichi;
-using MahjongCore.Riichi.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2024
+
+using MahjongCore.Riichi;
 
 namespace MahjongEventCoordinator.Common
 {
     class Helpers
     {
-
         public static IGameSettings GenerateInitialGameSettings()
         {
             // Set common settings factored into app functionality.
@@ -19,7 +14,7 @@ namespace MahjongEventCoordinator.Common
             settings.SetSetting(GameOption.OkaOption, Oka.Oka_None);
             settings.SetSetting(GameOption.RedDoraOption, RedDora.RedDora_0);
             settings.SetSetting(GameOption.StartingPoints, 30000);
-            settings.SetSetting(GameOption.ChomboPenaltyOption, ChomboPenalty.Penalty8000);
+            settings.SetSetting(GameOption.ChomboPenaltyOption, ChomboPenalty.Penalty20000);
             settings.SetSetting(GameOption.ChomboTypeOption, ChomboType.AfterRanking);
             settings.SetSetting(GameOption.WinnerGetsPool, false);
             settings.SetSetting(GameOption.NagashiBonusOnEastTempaiOnly, false);
@@ -32,7 +27,6 @@ namespace MahjongEventCoordinator.Common
             return settings;
         }
 
-        
         public static IGameResult GetGameResult(IGameState state)
         {
             IGameResult result = null;
@@ -50,8 +44,5 @@ namespace MahjongEventCoordinator.Common
             StateChanged?.Invoke();
         }
          */
-
-
-
     }
 }

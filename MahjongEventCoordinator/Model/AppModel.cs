@@ -12,6 +12,4 @@ namespace MahjongEventCoordinator.Model
     {
         public EventData ActiveEvent { get; set; }
     }
-
-
 }

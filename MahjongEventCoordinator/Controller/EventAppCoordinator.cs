@@ -13,7 +13,7 @@ namespace MahjongEventCoordinator.Controller
 #else
             false;
 #endif
-        public static readonly string ENV_TEST_AUTOLOAD_DEBATE = @"C:\Users\char4\Desktop\Test.xml";
+        public static readonly string ENV_TEST_AUTOLOAD_EVENT = @"C:\Users\char4\Desktop\Test.xml";
         public static readonly bool   ENV_TEST_USE_AUTOLOAD = false;
 
         public static AppModel     Model         { get; private set; }
@@ -21,7 +21,8 @@ namespace MahjongEventCoordinator.Controller
 
         public static void Initialize()
         {
-            ViewModel = new AppViewModel();
+            Model = new AppModel();
+            ViewModel = new AppViewModel(Model);
 
             // TODO: Create AppModel here, using ViewModel properties.
             // NOTE: Later this will be refactored so that we build the model
