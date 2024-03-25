@@ -2,69 +2,87 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace MahjongEventCoordinator.Model
 {
-    public class PlayerData : IComparable<PlayerData>
+    public class PlayerData : BaseModel, IComparable<PlayerData>, IEquatable<PlayerData>
     {
-        public Guid   Id         { get; set; }
-        public string Name       { get; set; }
-        public bool Substitute { get; set; }
-        public double[] RoundScores { get; set; }
-        public List<string> pastPlayers { get; set; }
-        public double TotalScore 
+        public Guid             Id                 { get; private set; }
+        public string           Name               { get => _Name;               set => AssignToProp(NameChanged, out _Name, _Name, value); }
+        public int?             SubstituteForRound { get => _SubstituteForRound; set => SetSubstituteForRound(value); }
+        public List<ScoreModel> RoundScores        { get; private set; }
+        public List<PlayerData> PastPlayers        { get; private set; }
+        public double           TotalScore         { get => GetTotalScore(); }
+
+        public event Action NameChanged;
+        public event Action SubstituteForRoundChanged;
+        public event Action RoundScoresChanged;
+        public event Action PastPlayersChanged;
+        public event Action TotalScoreChanged;
+
+        private EventData _Parent;
+        private string _Name;
+        private int? _SubstituteForRound = null;
+
+        public bool Equals(PlayerData other)   => Id.Equals(other.Id);
+        public int CompareTo(PlayerData other) => TotalScore.CompareTo(other.TotalScore);
+
+        public PlayerData(EventData parent, string name)
         {
-            get
-            {
-                double total = 0;
-                foreach (double score in RoundScores)
-                {
-                    total += score;
-                }
-                return total;
-            }
-        }
-        public void AssignScore(double score, int round)
-        {
-            RoundScores[round] = score;
+            _Parent = parent;
+            _Name = name;
         }
 
-		public int CompareTo(PlayerData other)
-		{
-			if (TotalScore > other.TotalScore)
-            {
-                return -1;
-            }
-            else if (TotalScore < other.TotalScore)
-            {
-                return 1;
-            }
-            else
-            { 
-                return 0; 
-            }
-		}
-        public void registerRepeats(string p, string q, string r)
+        public void InitializeEvent()
         {
-            this.pastPlayers.Add(p);
-            this.pastPlayers.Add(q);
-            this.pastPlayers.Add(r);
+
         }
+
+        public void AssignScore(int score, int round)
+        {
+            RoundScores[round].RawScore = score;
+            RoundScoresChanged?.Invoke();
+            TotalScoreChanged?.Invoke();
+        }
+
+        private void SetSubstituteForRound(int? value)
+        {
+            if (_SubstituteForRound != value)
+            {
+                _SubstituteForRound = value;
+                SubstituteForRoundChanged?.Invoke();
+            }
+        }
+
+        private double GetTotalScore()
+        {
+            double total = 0;
+            foreach (ScoreModel score in RoundScores)
+            {
+                total += score.Total;
+            }
+            return total;
+        }
+
+        public void registerRepeats(PlayerData p, PlayerData q, PlayerData r)
+        {
+            PastPlayers.Add(p);
+            PastPlayers.Add(q);
+            PastPlayers.Add(r);
+            PastPlayersChanged?.Invoke();
+        }
+
         public bool newOpponent(PlayerData other)
         {
             string p = other.Id.ToString();
-            foreach (string r in pastPlayers)
+            foreach (PlayerData r in PastPlayers)
             {
-                if (r == p)
+                if (r.Equals(p))
                 {
                     return false;
                 }
             }
             return true;
         }
-	}
+    }
 }

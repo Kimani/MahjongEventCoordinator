@@ -1,11 +1,7 @@
-﻿using MahjongCore.Riichi.Helpers;
+﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2024
+
+using MahjongCore.Riichi.Helpers;
 using MahjongCore.Riichi;
-using MahjongEventCoordinator.Properties;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MahjongEventCoordinator.Common;
 
 namespace MahjongEventCoordinator.Model
@@ -46,7 +42,7 @@ namespace MahjongEventCoordinator.Model
 
 			for (int i = 0; i < fScores.Length; i++)
 			{
-				Seats[i].Player.AssignScore(fScores[i], round);
+				Seats[i].Player.AssignScore((int)fScores[i], round);
 			}
 		}
 	}

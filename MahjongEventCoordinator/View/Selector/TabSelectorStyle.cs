@@ -13,6 +13,5 @@ namespace MahjongEventCoordinator.View.Selector
         {
             return (item != null) ? SetupTemplate : null;
         }
-
     }
 }

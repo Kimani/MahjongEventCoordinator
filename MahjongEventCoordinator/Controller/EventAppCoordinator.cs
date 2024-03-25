@@ -2,6 +2,7 @@
 
 using MahjongEventCoordinator.Model;
 using MahjongEventCoordinator.ViewModel;
+using System;
 
 namespace MahjongEventCoordinator.Controller
 {
@@ -13,11 +14,16 @@ namespace MahjongEventCoordinator.Controller
 #else
             false;
 #endif
+
         public static readonly string ENV_TEST_AUTOLOAD_EVENT = @"C:\Users\char4\Desktop\Test.xml";
         public static readonly bool   ENV_TEST_USE_AUTOLOAD = false;
 
         public static AppModel     Model         { get; private set; }
         public static AppViewModel ViewModel     { get; private set; }
+
+        public static event Action PlayerListChanged;
+
+        public static void NotifyPlayersChanged() => PlayerListChanged?.Invoke();
 
         public static void Initialize()
         {

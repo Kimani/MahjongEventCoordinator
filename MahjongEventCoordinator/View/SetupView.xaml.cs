@@ -1,24 +1,44 @@
 ﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2024
 
-using System.Text.RegularExpressions;
+using MahjongEventCoordinator.Controller;
+using MahjongEventCoordinator.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace MahjongEventCoordinator.View
 {
     public partial class SetupView : UserControl
     {
-        private static readonly Regex _IntegerRegex = new Regex("[^0-9]+"); //regex that matches disallowed text
-
-        private static bool IsIntegerText(string text)
-        {
-            return !_IntegerRegex.IsMatch(text);
-        }
+        private readonly AppViewModel _ViewModel; 
 
         public SetupView()
         {
+            _ViewModel = EventAppCoordinator.ViewModel;
+            DataContext = _ViewModel;
             InitializeComponent();
+
+            // EventAppCoordinator.PlayerListChanged += OnPlayerListChanged;
+        }
+
+        private void OnAddPlayerClicked(object sender, RoutedEventArgs args)
+        {
+            var appPlayerDialog = new PlayerNameDialog();
+            if (appPlayerDialog.ShowDialog().GetValueOrDefault(false))
+            {
+                _ViewModel.AddPlayer(appPlayerDialog.PlayerName);
+            }
+        }
+
+        private void OnEditPlayerClicked(object sender, RoutedEventArgs args)
+        {
+            if ((sender is Button editPlayerButton) && (editPlayerButton.DataContext is PlayerViewModel playerViewModel))
+            {
+                var appPlayerDialog = new PlayerNameDialog(playerViewModel.Name);
+                if (appPlayerDialog.ShowDialog().GetValueOrDefault(false))
+                {
+                    playerViewModel.Name = appPlayerDialog.PlayerName;
+                }
+            }
         }
     }
 }

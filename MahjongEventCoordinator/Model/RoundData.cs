@@ -1,11 +1,8 @@
 ﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2023
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MahjongEventCoordinator.Model
 {
@@ -32,13 +29,13 @@ namespace MahjongEventCoordinator.Model
                 finalRanking.Sort();
                 for (int i = 0; i < 4; i++)
                 {
-                    if (finalRanking[i].Substitute)
+                    if (finalRanking[i].SubstituteForRound.HasValue)
                     {
                         int findNonSub = 4;
                         bool foundNonSub = false;
                         while (!foundNonSub && findNonSub < finalRanking.Count)
                         {
-                            if (!finalRanking[findNonSub].Substitute)
+                            if (!finalRanking[findNonSub].SubstituteForRound.HasValue)
                             {
                                 finalRanking.swap(i, findNonSub);
                             }

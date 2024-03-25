@@ -1,7 +1,6 @@
 ﻿// [Ready Design Corps] - [Mahjong Event Coordinator] - Copyright 2023
 
 using MahjongEventCoordinator.Controller;
-using MahjongEventCoordinator.ViewModel;
 using System.Windows;
 
 namespace MahjongEventCoordinator
