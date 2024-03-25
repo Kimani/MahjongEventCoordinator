@@ -4,6 +4,7 @@ using MahjongCore.Riichi;
 using MahjongEventCoordinator.Common;
 using MahjongEventCoordinator.Controller;
 using MahjongEventCoordinator.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Data;
@@ -31,6 +32,7 @@ namespace MahjongEventCoordinator.ViewModel
         private readonly List<PlayerViewModel> _Players = new List<PlayerViewModel>();
 
         public void AddPlayer(string name) => _Model.ActiveEvent.AddPlayer(name);
+        public void DeletePlayer(Guid id)  => _Model.ActiveEvent.DeletePlayer(id);
 
         public AppViewModel(AppModel model)
         {

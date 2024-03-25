@@ -9,7 +9,7 @@ namespace MahjongEventCoordinator.View
 {
     public partial class SetupView : UserControl
     {
-        private readonly AppViewModel _ViewModel; 
+        private readonly AppViewModel _ViewModel;
 
         public SetupView()
         {
@@ -37,6 +37,17 @@ namespace MahjongEventCoordinator.View
                 if (appPlayerDialog.ShowDialog().GetValueOrDefault(false))
                 {
                     playerViewModel.Name = appPlayerDialog.PlayerName;
+                }
+            }
+        }
+
+        private void OnDeletePlayerClicked(object sender, RoutedEventArgs args)
+        {
+            if ((sender is Button deletePlayerButton) && (deletePlayerButton.DataContext is PlayerViewModel playerViewModel))
+            {
+                if (MessageBox.Show(Application.Current.MainWindow, "Really delete player?", "Delete player", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    _ViewModel.DeletePlayer(playerViewModel.Id);
                 }
             }
         }

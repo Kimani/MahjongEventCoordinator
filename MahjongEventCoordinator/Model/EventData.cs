@@ -60,5 +60,18 @@ namespace MahjongEventCoordinator.Model
             _Players.Add(new PlayerData(this, name));
             PlayersChanged?.Invoke();
         }
+
+        public void DeletePlayer(Guid id)
+        {
+            for (int i = _Players.Count - 1; i >= 0; --i)
+            {
+                if (_Players[i].Id.Equals(id))
+                {
+                    _Players.RemoveAt(i);
+                    PlayersChanged?.Invoke();
+                    break;
+                }
+            }
+        }
     }
 }

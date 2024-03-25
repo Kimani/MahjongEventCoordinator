@@ -31,6 +31,7 @@ namespace MahjongEventCoordinator.Model
         {
             _Parent = parent;
             _Name = name;
+            Id = Guid.NewGuid();
         }
 
         public void InitializeEvent()

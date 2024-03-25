@@ -52,10 +52,20 @@
                                         <Button
                                             Width="20"
                                             Height="20"
+                                            Margin="4,0,0,0"
+                                            Click="OnDeletePlayerClicked"
+                                            FontFamily="Segoe MDL2 Assets"
+                                            Content="&#xe10a;"
+                                            DockPanel.Dock="Right" />
+                                        
+                                        <Button
+                                            Width="20"
+                                            Height="20"
                                             Click="OnEditPlayerClicked"
                                             FontFamily="Segoe MDL2 Assets"
                                             Content="&#xe70f;"
                                             DockPanel.Dock="Right" />
+
 
                                         <TextBlock
                                             VerticalAlignment="Center"
