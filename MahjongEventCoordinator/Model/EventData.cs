@@ -26,6 +26,7 @@ namespace MahjongEventCoordinator.Model
         public SeatingStrategy           SeatingStrategy         { get => _SeatingStrategy;         set => AssignToProp(SeatingStrategyChanged,         out _SeatingStrategy,         _SeatingStrategy,         value); }
         public IReadOnlyList<PlayerData> Players                 { get => _Players.AsReadOnly(); }
         public IReadOnlyList<RoundData>  Rounds                  { get => _Rounds.AsReadOnly(); }
+        public int                       CurrentRoundIndex       { get => _CurrentRoundIndex;       set => AssignToProp(CurrentRoundIndexChanged, out _CurrentRoundIndex, _CurrentRoundIndex, value); }
 
         public event Action UpperDivisionModifierChanged;
         public event Action LowerDivisionModifierChanged;
@@ -39,6 +40,7 @@ namespace MahjongEventCoordinator.Model
         public event Action PlayersChanged;
         public event Action RoundsChanged;
         public event Action StartedChanged;
+        public event Action CurrentRoundIndexChanged;
 
         private bool _Started = false;
         private double _UpperDivisionModifier = 4;
@@ -49,11 +51,29 @@ namespace MahjongEventCoordinator.Model
         private int _QualifiersTime = 45;
         private int _FinalsCount = 1;
         private int _FinalsTime = 60;
+        private int _CurrentRoundIndex = 0;
         private SeatingStrategy _SeatingStrategy = SeatingStrategy.HzMethod;
         private readonly List<PlayerData> _Players = new List<PlayerData>();
         private readonly List<RoundData> _Rounds = new List<RoundData>();
 
         public EventData() { }
+
+        public void BeginTournament()
+        {
+            if (!Started)
+            {
+                Started = true;
+
+                int totalRoundCount = _QualifiersCount + _FinalsCount;
+                for (int i = 0; i < totalRoundCount; ++i)
+                {
+                    _Rounds.Add(new RoundData(this, i));
+                }
+                RoundsChanged?.Invoke();
+
+                _Rounds[0].BeginRound();
+            }
+        }
 
         public void AddPlayer(string name)
         {

@@ -213,7 +213,8 @@
                                 Text="Final Round Seating Strategy" />
                             <ComboBox
                                 DockPanel.Dock="Right"
-                                SelectedItem="{Binding FinalRoundSeatingStrategy, Mode=TwoWay}"
+                                SelectedIndex="0"
+                                IsEnabled="False"
                                 Width="100">
                                 <common:SeatingStrategy>HzMethod</common:SeatingStrategy>
                             </ComboBox>
@@ -221,11 +222,13 @@
 
                         <!-- Begin Tournament Button -->
                         <Button
+                            x:Name="BeginTournamentButton"
                             Grid.Row="2"
                             HorizontalAlignment="Stretch"
                             Margin="2,15,2,0"
                             Height="30"
                             Padding="0,-2,0,0"
+                            Click="OnBeginTournamentClicked"
                             Content="Begin Tournament" />
 
                         <!-- Round Controls -->

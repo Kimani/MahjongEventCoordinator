@@ -13,8 +13,13 @@
                 <view:SetupView />
             </DataTemplate>
 
+            <DataTemplate x:Key="RoundEditorTemplate">
+                <view:RoundEditorView />
+            </DataTemplate>
+
             <selector:TabSelectorStyle
                 SetupTemplate="{StaticResource SetupTemplate}"
+                RoundEditorTemplate="{StaticResource RoundEditorTemplate}"
                 x:Key="PageSelectorStyle" />
         </ResourceDictionary>
     </Window.Resources>

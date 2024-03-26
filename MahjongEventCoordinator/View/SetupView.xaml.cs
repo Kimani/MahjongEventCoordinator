@@ -51,5 +51,14 @@ namespace MahjongEventCoordinator.View
                 }
             }
         }
+
+        private void OnBeginTournamentClicked(object sender, RoutedEventArgs args)
+        {
+            if (!_ViewModel.Started && EventAppCoordinator.Model.ActiveEvent.Players.Count >= 2)
+            {
+                _ViewModel.BeginTournament();
+                BeginTournamentButton.IsEnabled = false; // This should be data binding.
+            }
+        }
     }
 }

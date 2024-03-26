@@ -18,12 +18,34 @@ namespace MahjongEventCoordinator.Model
     public class RoundData
     {
         public TableData[] Tables { get; set; }
-        public int roundNumber { get; set; }
-        public bool finalRound { get; set; }
+        public bool IsFinalRound { get; set; }
+        public int  RoundIndex { get; private set; }
+        public int  GroupIndex { get; private set; }
+
+        private EventData _Parent;
+
+        public RoundData(EventData parent, int index)
+        {
+            _Parent = parent;
+            RoundIndex = index;
+
+            GroupIndex = index;
+            if (GroupIndex >= parent.QualifiersCount)
+            {
+                GroupIndex -= parent.QualifiersCount;
+                IsFinalRound = true;
+            }
+        }
+
+        public void BeginRound()
+        {
+
+        }
+
         public void loadPlayers(IReadOnlyList<PlayerData> Players)
         {
             Tables = new TableData[Players.Count/4];
-            if (finalRound)
+            if (IsFinalRound)
             {
                 List<PlayerData> finalRanking = new List<PlayerData>(Players);
                 finalRanking.Sort();

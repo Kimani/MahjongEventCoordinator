@@ -48,14 +48,32 @@ namespace MahjongEventCoordinator.ViewModel
             _Model.ActiveEvent.SeatingStrategyChanged         += () => Notify("SeatingStrategy");
             _Model.ActiveEvent.StartedChanged                 += () => Notify("UpperDivisionModifier");
             _Model.ActiveEvent.PlayersChanged                 += OnPlayersChanged;
-
-            //_Model.ActiveEvent.RoundsChanged                  += () => Notify("UpperDivisionModifier");
+            _Model.ActiveEvent.RoundsChanged                  += OnRoundsChanged;
 
             // Initialize collection of pages. We will point to ourselves as
             // the 'base' page, which will represent the settings page in the UX.
             _Pages.Add(this);
             TournamentPages = CollectionViewSource.GetDefaultView(_Pages);
             Players = CollectionViewSource.GetDefaultView(_Players);
+        }
+
+        public void BeginTournament()
+        {
+            // TODO: Assert started is false atm.
+            if (!Started)
+            {
+                _Model.ActiveEvent.BeginTournament();
+            }
+        }
+
+        private void OnRoundsChanged()
+        {
+            // This should only happen at the beginning seeding of the event.
+            foreach (RoundData round in _Model.ActiveEvent.Rounds)
+            {
+                _Pages.Add(new RoundViewModel(round));
+            }
+            TournamentPages.Refresh();
         }
 
         private void OnPlayersChanged()

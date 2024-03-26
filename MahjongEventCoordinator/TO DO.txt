@@ -1,17 +1,19 @@
 ﻿
 P1
 - Base implementation:
-*Player Inputs (ID, Name, Sub=false, score=0.0)
+	*Player Inputs (ID, Name, Sub=false, score=0.0)
 
-*3 Rounds, 1 Final
+	*3 Rounds, 1 Final
 
-*Final Round (Top 4 divide by 4 for score, everyone else divide by 2)
-**Top 4 (minus subs) face each other, everyone else is sorted to the tables (5 at T1, 6 at T2, etc)
+	*Final Round (Top 4 divide by 4 for score, everyone else divide by 2)
+	**Top 4 (minus subs) face each other, everyone else is sorted to the tables (5 at T1, 6 at T2, etc)
 
-*sort()
-*finalsort()
+	*sort()
+	*finalsort()
 
-*UpdatePlayer Method: Takes playerdata between rounds and puts it back into EventData.Players.
+	*UpdatePlayer Method: Takes playerdata between rounds and puts it back into EventData.Players.
+- Really, we need to refactor everything into EventData... and not AppModel..
+- Also inconsistent naming of things?
 
 P2
 - Timer
